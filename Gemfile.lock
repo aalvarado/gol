@@ -10,6 +10,7 @@ GEM
     opal-rspec (0.4.2)
       opal (~> 0.7.0)
     rack (1.6.0)
+    rake (10.4.2)
     sourcemap (0.1.1)
     sprockets (3.0.1)
       rack (~> 1.0)
@@ -21,3 +22,4 @@ PLATFORMS
 DEPENDENCIES
   opal
   opal-rspec
+  rake
