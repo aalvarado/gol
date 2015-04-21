@@ -1,5 +1,3 @@
-require 'rspec_helper'
-
 describe Cell do
   let( :cell ) { Cell.new }
 
