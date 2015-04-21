@@ -1,16 +1,8 @@
 describe Cell do
-  let( :cell ) { Cell.new }
-
-  describe :new do
-    it 'takes two positional parameters' do
-      cell = Cell.new(0,0)
-      expect( cell.position ).to eql [0,0]
-    end
-  end
+  let( :cell ) { Cell.new(0,0) }
 
   describe :position do
-    it 'takes two parameters' do
-      cell.set_position(1, 1)
+    it 'has position as an attribute' do
       expect( cell.position ).to eql [0,0]
     end
   end
