@@ -1,9 +1,9 @@
 describe Cell do
-  let( :cell ) { Cell.new(0,0) }
+  let( :cell ) { Cell.new }
 
-  describe :position do
-    it 'has position as an attribute' do
-      expect( cell.position ).to eql [0,0]
+  describe :status do
+    it 'has a dead as default of 0 (dead)' do
+      expect( cell.status ).to eql 0
     end
   end
 end
