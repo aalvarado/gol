@@ -1,7 +1,7 @@
 class Cell
-  attr_accessor :position
+  attr_accessor :status
 
-  def initialize(x,y)
-    @position = [x,y]
+  def initialize
+    @status = 0
   end
 end
