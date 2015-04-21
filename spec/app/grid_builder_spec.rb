@@ -18,5 +18,9 @@ describe GridBuilder do
         expect( elems.size ).to eql size[1]
       end
     end
+
+    it 'sets grid.cells as Cells' do
+      expect( cells.flatten.map(&:class).uniq ).to eql [ Cell ]
+    end
   end
 end
