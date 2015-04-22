@@ -1,5 +1,6 @@
 require 'forwardable'
 
+
 class LooplessArray
   extend Forwardable
 
@@ -9,6 +10,10 @@ class LooplessArray
     @list = list
     @index = 0
   end
+
+# Only useful for really small number of elements
+# aprox < 9000 on my computer.
+# See $ ulimit -a | grep stack
 
   def recurse_each &block
     do_recurse_each(&block)
