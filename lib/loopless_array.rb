@@ -16,8 +16,8 @@ class LooplessArray
 # See $ ulimit -a | grep stack
 
   def recurse_each &block
+    @index = 0
     do_recurse_each(&block)
-    reset_index_on_last
     @list
   end
 
@@ -39,9 +39,5 @@ class LooplessArray
 
   def index_within_bounds?
     @index < @list.size
-  end
-
-  def reset_index_on_last
-    !index_within_bounds? && @index = 0
   end
 end
