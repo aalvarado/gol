@@ -1,7 +1,9 @@
 require 'forwardable'
+require 'r_times'
 
 class GridBuilder
   extend Forwardable
+  include RTimes
 
   def_delegators :@grid, :cells
 
@@ -25,7 +27,7 @@ class GridBuilder
   end
 
   def create_row
-    cells[@row] = [ new_cell ] * @v_size
+    cells[@row] = create_row_cells
   end
 
   def rows_within_range?
@@ -42,5 +44,11 @@ class GridBuilder
 
   def new_grid
     Grid.new
+  end
+
+  def create_row_cells
+    row_cells = []
+    rtimes(@v_size) { row_cells << Cell.new }
+    row_cells
   end
 end
