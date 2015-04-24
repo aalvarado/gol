@@ -14,13 +14,15 @@ describe GridBuilder do
     end
 
     it 'returns a grid with specified cell column count' do
-      cells.each do |elems|
+      cells.recurse_each do |elems|
         expect( elems.size ).to eql size[1]
       end
     end
 
     it 'sets grid.cells as Cells' do
-      expect( cells.flatten.map(&:class).uniq ).to eql [ Cell ]
+      cells.recurse_each do |r|
+        r.recurse_each { |c| expect( c.class ).to eql Cell }
+      end
     end
   end
 end

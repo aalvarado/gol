@@ -3,7 +3,7 @@ describe Grid do
 
   describe 'cells' do
     it 'is an array' do
-      expect( grid.cells ).to be_an Array
+      expect( grid.cells ).to be_a LooplessArray
     end
   end
 end
