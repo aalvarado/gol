@@ -1,6 +1,5 @@
 require 'forwardable'
 
-
 class LooplessArray
   extend Forwardable
 
@@ -18,13 +17,13 @@ class LooplessArray
   def recurse_each(&block)
     init_index
     any? && do_recurse_each(&block)
-    @list
+    self
   end
 
   def recurse_each_with_index(&block)
     init_index
     any? && do_recurse_each_with_index(&block)
-    @list
+    self
   end
 
   def rmap(&block)
