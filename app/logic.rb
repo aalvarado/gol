@@ -2,6 +2,10 @@ require 'forwardable'
 require 'loopless_array'
 
 class Logic
+  extend Forwardable
+
+  def_delegators :@grid, :neighbor_live_count
+
   def initialize(grid)
     @grid = grid
   end
@@ -25,12 +29,15 @@ class Logic
   end
 
 
-  def determine_status
-    nc = neighbor_count
-    ( nc <  2 || nc >  3 ) && @dead_generation << current_cell
-    ( nc == 2 || nc == 3 ) && @live_generation << current_cell
+  def determine_status cell, neighbor_live_count
+    nc = neighbor_live_count
+    ( nc <  2 || nc >  3 ) && @dead_generation << cell
+    ( nc == 2 || nc == 3 ) && @live_generation << cell
   end
 
   def scan_cells
+    @grid.each_cell_count do |cell, nl_count|
+      determine_status(cell, nl_count)
+    end
   end
 end
