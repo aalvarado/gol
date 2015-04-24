@@ -4,7 +4,7 @@ require 'forwardable'
 class LooplessArray
   extend Forwardable
 
-  def_delegators :@list, :<<, :size, :[]
+  def_delegators :@list, :<<, :size, :[], :any?
 
   def initialize(list = [])
     @list = list
@@ -17,20 +17,20 @@ class LooplessArray
 
   def recurse_each(&block)
     init_index
-    do_recurse_each(&block)
+    any? && do_recurse_each(&block)
     @list
   end
 
   def recurse_each_with_index(&block)
     init_index
-    do_recurse_each_with_index(&block)
+    any? && do_recurse_each_with_index(&block)
     @list
   end
 
   def rmap(&block)
     init_index
     @new_list = self.class.new
-    do_rmap(&block)
+    any? && do_rmap(&block)
     @new_list
   end
 
