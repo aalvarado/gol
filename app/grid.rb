@@ -4,28 +4,43 @@ class Grid
   def initialize
     @cells = LooplessArray.new
   end
+  #
 
-  def living_neighbor_cells(x, y)
-    @x = x
-    @y = y
-    neighbors.compact().rmap(&:status).reduce(:+)
+  def each_cell_count(&block)
+    each_cell(&block)
   end
 
   private
 
-  def neighbors
+  def each_cell(&block)
+    cells.recurse_each_with_index do |row, x|
+      row.recurse_each_with_index do |cell, y|
+        block.call(cell, neighbor_live_count(x,y))
+      end
+    end
+  end
+
+  def neighbor_live_count(x, y)
+    count = 0
+    neighbors(x, y).rmap(&:status).recurse_each do |status|
+      count += status
+    end
+    count
+  end
+
+  def neighbors(x, y)
     filtered_neighbors = LooplessArray.new
-    neighbor_map.recurse_each do |e|
-      bounds_check_neighbors(e) && filtered_neighbors << cells[e[0]][e[1]]
+    neighbor_map(x, y).recurse_each do |c|
+      bounds_check_neighbors(c) && filtered_neighbors << cells[ c[0] ][ c[1] ]
     end
     filtered_neighbors
   end
 
-  def neighbor_map
+  def neighbor_map(x, y)
     LooplessArray.new [
-      [@x - 1, @y - 1], [@x - 1, @y    ], [@x - 1, @y + 1],
-      [@x,     @y - 1], [@x,     @y + 1],
-      [@x + 1, @y + 1], [@x + 1, @y    ], [@x + 1, @y + 1]
+      [x - 1, y - 1], [x - 1, y    ], [x - 1, y + 1],
+      [x,     y - 1], [x,     y + 1],
+      [x + 1, y + 1], [x + 1, y    ], [x + 1, y + 1]
     ]
   end
 
