@@ -24,15 +24,18 @@ class Logic
   end
 
   def apply_cell_changes
-    @live_generation.recurse_each{ |c| c.status = 1 }
-    @dead_generation.recurse_each{ |c| c.status = 0 }
+    @live_generation.recurse_each{ |c| c.alive! }
+    @dead_generation.recurse_each{ |c| c.dead!  }
   end
 
-
+  # Less than 2 cells or more than 3 neighbor cells
+  # the cell dies
+  #
+  #
   def determine_status cell, neighbor_live_count
     nc = neighbor_live_count
     ( nc <  2 || nc >  3 ) && @dead_generation << cell
-    ( nc == 2 || nc == 3 ) && @live_generation << cell
+    ( nc == 3 )            && @live_generation << cell
   end
 
   def scan_cells
