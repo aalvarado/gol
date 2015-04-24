@@ -30,8 +30,9 @@ class Logic
 
   # Less than 2 cells or more than 3 neighbor cells
   # the cell dies
-  #
-  #
+  # if 2 and cell is alive, it continues to be alive
+  # if the cell has 3, it spawns a new cell
+
   def determine_status cell, neighbor_live_count
     nc = neighbor_live_count
     ( nc <  2 || nc >  3 ) && @dead_generation << cell
@@ -39,7 +40,7 @@ class Logic
   end
 
   def scan_cells
-    @grid.each_cell_count do |cell, nl_count|
+    @grid.each_cell_neighbor_count do |cell, nl_count|
       determine_status(cell, nl_count)
     end
   end

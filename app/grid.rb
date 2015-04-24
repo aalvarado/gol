@@ -4,9 +4,8 @@ class Grid
   def initialize
     @cells = LooplessArray.new
   end
-  #
 
-  def each_cell_count(&block)
+  def each_cell_neighbor_count(&block)
     each_cell(&block)
   end
 
