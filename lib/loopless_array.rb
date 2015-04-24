@@ -15,14 +15,20 @@ class LooplessArray
 # aprox < 9000 on my computer.
 # See $ ulimit -a | grep stack
 
-  def recurse_each &block
-    @index = 0
+  def recurse_each(&block)
+    init_index
     do_recurse_each(&block)
     @list
   end
 
-  def rmap &block
-    @index = 0
+  def recurse_each_with_index(&block)
+    init_index
+    do_recurse_each_with_index(&block)
+    @list
+  end
+
+  def rmap(&block)
+    init_index
     @new_list = self.class.new
     do_rmap(&block)
     @new_list
@@ -40,18 +46,30 @@ class LooplessArray
 
   def do_recurse_each(&block)
     block.call(current_element)
-    inc_index
-    index_within_bounds? && do_recurse_each(&block)
+    recurse_after_steps(__method__, &block)
+  end
+
+  def do_recurse_each_with_index(&block)
+    block.call(current_element, @index)
+    recurse_after_steps(__method__, &block)
   end
 
   def do_rmap(&block)
     block && @new_list << block.call(current_element)
+    recurse_after_steps(__method__, &block)
+  end
+
+  def recurse_after_steps(method_name, &block)
     inc_index
-    index_within_bounds? && do_rmap(&block)
+    index_within_bounds? && send(method_name, &block )
   end
 
   def current_element
     @list[@index]
+  end
+
+  def init_index
+    @index = 0
   end
 
   def inc_index
