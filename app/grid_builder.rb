@@ -14,15 +14,15 @@ class GridBuilder
   private
 
   def create_rows(h_size, v_size)
-    LooplessArray.new((1..h_size).to_a).rmap do |i|
-      LooplessArray.new((1..v_size).to_a).rmap do |ii|
+    LooplessArray.new((1..h_size).to_a).rmap do
+      LooplessArray.new((1..v_size).to_a).rmap do
         new_cell
       end
     end
   end
 
   def new_cell
-    Cell.new()
+    Cell.new
   end
 
   def new_grid

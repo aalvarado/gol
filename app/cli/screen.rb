@@ -17,7 +17,7 @@ class Screen
   end
 
   def init_grid
-    @grid = GridBuilder.new().create(conf['width'], conf['height'])
+    @grid = GridBuilder.new.create(conf['width'], conf['height'])
     @cells = @grid.cells
     @logic = Logic.new(@grid)
   end
@@ -59,11 +59,11 @@ class Screen
   end
 
   def handle_key_event(keyn)
-    handle_key?(keyn) && self.send("event_#{key_map[keyn]}")
+    handle_key?(keyn) && send("event_#{key_map[keyn]}")
   end
 
-  def handle_key? keyn
-    key_map.keys.include? keyn
+  def handle_key?(keyn)
+    key_map.keys.include?(keyn)
   end
 
   def setup_cells
@@ -78,43 +78,43 @@ class Screen
   end
 
   def event_up
-    y, x = *get_yx
-    y >= conf['y_upper_limit'] && ( y -= 1 )
+    y, x = *getyx
+    y >= conf['y_upper_limit'] && (y -= 1)
     set_cursor(y, x)
   end
 
   def event_down
-    y, x = *get_yx
-    y <= conf['height'] - conf['y_offset'] && ( y += 1 )
+    y, x = *getyx
+    y <= conf['height'] - conf['y_offset'] && (y += 1)
     set_cursor(y, x)
   end
 
   def event_left
-    y, x = *get_yx
-    x >= conf['x_left_limit'] && ( x -= 1 )
+    y, x = *getyx
+    x >= conf['x_left_limit'] && (x -= 1)
     set_cursor(y, x)
   end
 
   def event_right
-    y, x = *get_yx
-    x <= conf['width'] - conf['x_offset'] && ( x += 1 )
+    y, x = *getyx
+    x <= conf['width'] - conf['x_offset'] && (x += 1)
     set_cursor(y, x)
   end
 
   def event_space
-    y, x = *get_yx
-    toggle_cell(y,x)
+    y, x = *getyx
+    toggle_cell(y, x)
     update_cells
-    set_cursor(y,x)
+    set_cursor(y, x)
   end
 
-  def toggle_cell(y,x)
+  def toggle_cell(y, x)
     y -= conf['y_offset']
     x -= conf['x_offset']
     @cells[x][y].alive? && @cells[x][y].dead! || @cells[x][y].alive!
   end
 
-  def get_yx
+  def getyx
     x = []
     y = []
     @gol.getyx(y, x)
@@ -146,11 +146,11 @@ class Screen
   def generation_update
     @generation ||= 0
     @generation += 1
-    @gol.mvwaddstr( conf['height'] + 3, 2, "Generation #{@generation}")
+    @gol.mvwaddstr(conf['height'] + 3, 2, "Generation #{@generation}")
   end
 
   def display_help
-    @gol.mvwaddstr( conf['height'] + 4, 2, conf['help'])
+    @gol.mvwaddstr(conf['height'] + 4, 2, conf['help'])
     return_origin
   end
 

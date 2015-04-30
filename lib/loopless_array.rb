@@ -10,9 +10,9 @@ class LooplessArray
     @index = 0
   end
 
-# Only useful for really small number of elements
-# aprox < 9000 on my computer.
-# See $ ulimit -a | grep stack
+  # Only useful for really small number of elements
+  # aprox < 9000 on my computer.
+  # See $ ulimit -a | grep stack
 
   def recurse_each(&block)
     init_index
@@ -36,7 +36,7 @@ class LooplessArray
   def compact
     new_list = self.class.new
     do_recurse_each do |e|
-      e != nil && new_list << e
+      !e.nil? && new_list << e
     end
     new_list
   end
@@ -60,7 +60,7 @@ class LooplessArray
 
   def recurse_after_steps(method_name, &block)
     inc_index
-    index_within_bounds? && send(method_name, &block )
+    index_within_bounds? && send(method_name, &block)
   end
 
   def current_element
