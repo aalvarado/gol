@@ -1,0 +1,37 @@
+width: 100
+height: 30
+dead_cell: ░
+live_cell: O
+y_offset: 1
+x_offset: 1
+
+y_upper_limit: 2
+x_left_limit: 2
+
+window:
+  dimensions:
+    - 0
+    - 0
+    - 0
+    - 0
+  box:
+    - 0
+    - 0
+
+key_continue: 10
+key_quit: 113
+
+key_map:
+  65: up
+  66: down
+  67: right
+  68: left
+  32: space
+
+  104: left
+  106: down
+  107: up
+  108: right
+
+final_message: Thanks for playing! https://github.com/aalvarado/gol
+help: Use arrow keys or h,j,k,l to navigate the grid. Toggle cells with spacebar. To run press enter. Once running press q to exit.

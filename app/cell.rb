@@ -12,4 +12,8 @@ class Cell
   def alive!
     self.status = 1
   end
+
+  def alive?
+    status == 1
+  end
 end
