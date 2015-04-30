@@ -29,7 +29,7 @@ describe LooplessArray do
       la.recurse_each_with_index do |_, i|
         list2 << i
       end
-      expect(list2).to eql(0...la.size).to_a
+      expect(list2).to eql((0...la.size).to_a)
     end
   end
 
