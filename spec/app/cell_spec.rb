@@ -11,4 +11,16 @@ describe Cell do
       expect( cell.status ).to eql 1
     end
   end
+
+  describe 'alive?' do
+    it 'returns true if cell is alive' do
+      cell.alive!
+      expect( cell.alive? ).to eq true
+    end
+
+    it 'returns false if cell is dead' do
+      cell.dead!
+      expect( cell.alive? ).to eq false
+    end
+  end
 end
