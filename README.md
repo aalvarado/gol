@@ -1,4 +1,6 @@
 # gol
+[![Build Status](https://travis-ci.org/aalvarado/gol.svg?branch=master)](https://travis-ci.org/aalvarado/gol)
+
 Conway's game of life
 
 ### Dependencies
