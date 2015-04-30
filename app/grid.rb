@@ -1,7 +1,4 @@
 class Grid
-  # Holds a matrix of cells and can iterate and provide
-  # neighbor live count around a cell
-
   attr_accessor :cells
 
   def initialize
