@@ -6,5 +6,3 @@ require 'grid'
 require 'grid_builder'
 require 'logic'
 require 'cli/main'
-
-main
