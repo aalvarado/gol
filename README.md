@@ -20,3 +20,8 @@ Hit `q` again to quit the program.
 ```
 $ rspec
 ```
+
+### Running Game
+```
+ruby start.rb
+```
