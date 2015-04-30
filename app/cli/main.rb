@@ -62,7 +62,7 @@ def main_window
         x[0] += 1 if x[0] <= conf[:width] - 2
       when 68
         x[0] -= 1 if x[0] >= 2
-      when 120
+      when 32
         if @cells[ x[0] - 1][ y[0] - 1].status == 0
           @gol.addstr(conf[:live_cell])
           @cells[ x[0] - 1][ y[0] - 1].alive!
