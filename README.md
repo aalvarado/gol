@@ -6,12 +6,15 @@ Conway's game of life
 
 ### Usage
 
+clone the project, run `bundle install` and then run:
+
 ```
 $ ruby start.rb
 ```
 
-Use arrow keys to make a cell alive or dead.
-Once you're ready hit `q` and the game will start.
+Use arrow keys or h,j,k,l to move, use the spacebar to make a cell alive or dead.
+
+Once you're ready hit `enter` and the game will start.
 
 Hit `q` again to quit the program.
 
@@ -19,9 +22,4 @@ Hit `q` again to quit the program.
 
 ```
 $ rspec
-```
-
-### Running Game
-```
-ruby start.rb
 ```
