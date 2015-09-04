@@ -1,5 +1,6 @@
 # gol
 [![Build Status](https://travis-ci.org/aalvarado/gol.svg?branch=master)](https://travis-ci.org/aalvarado/gol)
+[![Code Climate](https://codeclimate.com/github/aalvarado/gol/badges/gpa.svg)](https://codeclimate.com/github/aalvarado/gol)
 
 Conway's game of life
 
