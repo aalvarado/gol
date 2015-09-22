@@ -5,8 +5,8 @@
 Conway's game of life
 
 ### Dependencies
-* If want to run it in the command line you need Ncurses development library - `libncursesw5-dev` in Ubuntu
-
+* Ubuntu - Ncurses development library - `libncursesw5-dev`
+* OSX - Ncurses `brew install ncurses`
 ### Usage
 
 clone the project, run `bundle install` and then run:
