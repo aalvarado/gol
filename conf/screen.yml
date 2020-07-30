@@ -1,7 +1,7 @@
 width: 100
 height: 30
-dead_cell: ░
-live_cell: O
+dead_cell: ' '
+live_cell: ⛧
 y_offset: 1
 x_offset: 1
 

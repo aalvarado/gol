@@ -19,8 +19,10 @@ class Logic
   private
 
   def initialize_step
-    @live_generation = LooplessArray.new
-    @dead_generation = LooplessArray.new
+    @live_generation ||= LooplessArray.new
+    @dead_generation ||= LooplessArray.new
+    @live_generation.clear
+    @dead_generation.clear
   end
 
   def apply_cell_changes

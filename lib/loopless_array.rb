@@ -3,7 +3,7 @@ require 'forwardable'
 class LooplessArray
   extend Forwardable
 
-  def_delegators :@list, :<<, :size, :[], :any?
+  def_delegators :@list, :<<, :size, :[], :any?, :clear
 
   def initialize(list = [])
     @list = list
