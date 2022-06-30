@@ -4,6 +4,9 @@
 
 Conway's game of life
 
+![image](https://user-images.githubusercontent.com/370322/176753530-41fa791a-3e8e-4e07-aa15-da5adef29ca8.png)
+
+
 ### Dependencies
 * Ubuntu - Ncurses development library - `libncursesw5-dev`
 * OSX - Ncurses `brew install ncurses`
