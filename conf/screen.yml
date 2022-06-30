@@ -1,7 +1,7 @@
 width: 100
 height: 30
 dead_cell: ' '
-live_cell: ⛧
+live_cell: '0'
 y_offset: 1
 x_offset: 1
 
@@ -22,8 +22,8 @@ key_continue: 10
 key_quit: 113
 
 key_map:
-  65: down
-  66: up
+  65: up
+  66: down
   67: right
   68: left
   32: space
